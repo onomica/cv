@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anton Sobaleu — Senior PHP / Go Developer</title>
+  <meta name="description" content="Anton Sobaleu — Senior PHP / Go Developer, Magento 2 (Adobe Commerce) Specialist. 6+ years in e-commerce backend, payment integrations, and Go microservices.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+  <style>
+    /* ===== Design tokens (mirror the PDF exactly) ===== */
+    :root {
+      --blue:        #1F4E79;
+      --blue-dark:   #163A5A;
+      --gray:        #595959;
+      --light-gray:  #BFBFBF;
+      --bg-page:     #F4F4F4;   /* surrounding "desk" colour */
+      --bg-paper:    #FFFFFF;
+      --text:        #1A1A1A;
+      --shadow:      0 4px 24px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.06);
+      --paper-w:     820px;     /* close to A4 at ~96dpi w/ margins */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg-page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px 80px;
+    }
+
+    /* ===== Floating Download button ===== */
+    .download-fab {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(31,78,121,.35);
+      transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+    }
+    .download-fab:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(31,78,121,.45);
+    }
+    .download-fab:active { transform: translateY(0); }
+    .download-fab svg { width: 18px; height: 18px; }
+
+    /* ===== "Paper" wrapper ===== */
+    .paper {
+      max-width: var(--paper-w);
+      margin: 0 auto;
+      background: var(--bg-paper);
+      box-shadow: var(--shadow);
+      padding: 56px 64px;
+      border-radius: 2px;
+    }
+
+    /* ===== Header ===== */
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--light-gray);
+      margin-bottom: 4px;
+    }
+    .header h1 {
+      margin: 0 0 4px;
+      color: var(--blue);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .header .subtitle {
+      color: var(--gray);
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .header .subtitle .dot { color: var(--blue); margin: 0 6px; }
+    .contact {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color .12s ease;
+    }
+    .contact a:hover { color: var(--blue); text-decoration: underline; }
+    .contact .sep { color: var(--light-gray); margin: 0 8px; }
+
+    .photo {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ===== Section headings ===== */
+    h2.section {
+      margin: 24px 0 10px;
+      padding-bottom: 4px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      border-bottom: 1.5px solid var(--blue);
+    }
+
+    /* ===== Summary ===== */
+    p.summary {
+      margin: 0 0 4px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ===== Skills ===== */
+    .skill-row {
+      margin: 0 0 5px;
+      font-size: 14px;
+    }
+    .skill-row .label {
+      font-weight: 700;
+    }
+
+    /* ===== Job blocks ===== */
+    .job {
+      margin-top: 12px;
+    }
+    .job:first-of-type { margin-top: 6px; }
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 2px;
+    }
+    .job-head .role { font-weight: 700; font-size: 14.5px; }
+    .job-head .company {
+      font-style: italic;
+      color: var(--text);
+    }
+    .job-head .em { color: var(--text); }
+    .job-head .dates {
+      color: var(--gray);
+      white-space: nowrap;
+      font-size: 13.5px;
+    }
+    .job-context {
+      font-style: italic;
+      color: var(--gray);
+      font-size: 13px;
+      margin: 0 0 6px;
+      line-height: 1.45;
+    }
+    ul.bullets {
+      margin: 0 0 4px;
+      padding-left: 22px;
+      list-style: none;
+    }
+    ul.bullets li {
+      position: relative;
+      margin-bottom: 4px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    ul.bullets li::before {
+      content: "•";
+      position: absolute;
+      left: -14px;
+      top: 0;
+      color: var(--text);
+    }
+    ul.bullets.nested {
+      padding-left: 22px;
+      margin-top: 2px;
+    }
+
+    /* ===== Languages / Education simple rows ===== */
+    .simple-row { margin: 0 0 4px; font-size: 14px; }
+    .simple-row .label { font-weight: 700; }
+    .simple-row .date { color: var(--gray); margin-left: 6px; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 720px) {
+      body { padding: 20px 8px 60px; }
+      .paper { padding: 32px 24px; }
+      .header {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .header > .photo {
+        order: -1;
+        width: 96px;
+        height: 96px;
+      }
+      .header h1 { font-size: 26px; }
+      .header .subtitle { font-size: 13.5px; }
+      .contact .sep { display: none; }
+      .contact a { display: inline-block; margin-right: 8px; }
+      .job-head {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .job-head .dates { font-size: 12.5px; }
+      .download-fab {
+        top: 12px;
+        right: 12px;
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+      .download-fab .label-text { display: none; }
+    }
+
+    /* ===== Print (browser "Print to PDF" mirrors the original PDF) ===== */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        font-size: 11pt;
+      }
+      .paper {
+        box-shadow: none;
+        max-width: none;
+        padding: 0;
+        margin: 0;
+      }
+      .download-fab { display: none; }
+      a { color: inherit; text-decoration: none; }
+      h2.section { page-break-after: avoid; }
+      .job { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="download-fab" href="Anton_Sobaleu_CV.pdf" download="Anton_Sobaleu_CV.pdf" aria-label="Download CV as PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    <span class="label-text">Download CV</span>
+  </a>
+
+  <main class="paper" role="main">
+
+    <!-- ============== HEADER ============== -->
+    <header class="header">
+      <div>
+        <h1>Anton Sobaleu</h1>
+        <div class="subtitle">
+          Senior PHP / Go Developer
+          <span class="dot">•</span>
+          Magento 2 (Adobe Commerce) Specialist
+        </div>
+        <div class="contact">
+          <span>Białystok, Poland</span>
+          <span class="sep">|</span>
+          <a href="mailto:zolip4toxa@gmail.com">zolip4toxa@gmail.com</a>
+          <span class="sep">|</span>
+          <a href="tel:+48451666139">+48 451 666 139</a>
+          <span class="sep">|</span>
+          <a href="https://www.linkedin.com/in/asobaleu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/asobaleu</a>
+        </div>
+      </div>
+      <img class="photo" src="photo.jpg" alt="Anton Sobaleu" loading="lazy">
+    </header>
+
+    <!-- ============== SUMMARY ============== -->
+    <h2 class="section">Professional Summary</h2>
+    <p class="summary">
+      Backend engineer with 6+ years of experience building and maintaining web and e-commerce systems,
+      with deep expertise in PHP/Symfony, Magento 2 (Adobe Commerce) and growing focus on Go microservices.
+      Specialized in payment integrations, multi-tenant platforms, high-load data processing, and cross-platform
+      e-commerce plugin development. Delivered production plugins for 5 major e-commerce platforms, integrated
+      multiple payment providers, and built Go services processing analytics data into ClickHouse.
+    </p>
+
+    <!-- ============== SKILLS ============== -->
+    <h2 class="section">Technical Skills</h2>
+    <p class="skill-row"><span class="label">Languages:</span> PHP 7/8, Go (Golang), JavaScript, TypeScript, HTML, CSS, SQL</p>
+    <p class="skill-row"><span class="label">E-commerce &amp; CMS Platforms:</span> Magento 2 / Adobe Commerce (incl. Hyvä theme), Shopware 6, WooCommerce, PrestaShop, OpenCart, Sulu CMS 3</p>
+    <p class="skill-row"><span class="label">Frameworks &amp; Libraries:</span> Symfony 6/7, Doctrine ORM, Twig, Symfony UX (Stimulus, Turbo, Live Components), FrankenPHP, Gin (Go), React, Vue.js, Node.js, Bootstrap 5, jQuery, Knockout.js</p>
+    <p class="skill-row"><span class="label">APIs &amp; Communication:</span> GraphQL, REST API, RabbitMQ, Webhooks, gRPC basics</p>
+    <p class="skill-row"><span class="label">Databases &amp; Storage:</span> MySQL, Redis, ClickHouse</p>
+    <p class="skill-row"><span class="label">Cloud &amp; Infrastructure:</span> GCP (Cloud Run, Pub/Sub, Compute Engine, Maps, reCAPTCHA), Docker, docker-compose, Nginx, Linux</p>
+    <p class="skill-row"><span class="label">CI/CD &amp; Monitoring:</span> GitLab CI, GitHub Actions, Grafana, Prometheus</p>
+    <p class="skill-row"><span class="label">Testing:</span> PHPUnit, integration tests, Playwright, end-to-end testing; Go testing package, testify, table-driven tests</p>
+    <p class="skill-row"><span class="label">Practices &amp; Architecture:</span> SOLID, DRY, KISS, Design Patterns, DDD (layered: Domain / Application / Infrastructure), TDD, code review, performance profiling (Xdebug, PHPStan, PHP-CS-Fixer)</p>
+
+    <!-- ============== EXPERIENCE ============== -->
+    <h2 class="section">Work Experience</h2>
+
+    <!-- Magedia -->
+    <article class="job">
+      <div class="job-head">
+        <div><span class="role">Full-Stack PHP Developer</span> <span class="em">—</span> <span class="company">Magedia</span></div>
+        <div class="dates">January 2026 — Present</div>
+      </div>
+      <p class="job-context">
+        Multi-tenant web portal for childcare facilities (Betreuungsstätten) — a public-facing site for parents
+        and an admin interface for content editors, built on Sulu CMS.
+      </p>
+      <ul class="bullets">
+        <li>Working full-stack on PHP 8.4, Symfony 7, Sulu CMS 3, Doctrine ORM, RabbitMQ, and FrankenPHP.</li>
+        <li>Building Sulu Admin (React-based custom widgets, admin form types, XML templates) and the public site (Twig, Symfony UX — Stimulus, Turbo, Live Components — Bootstrap 5.3, SCSS, AssetMapper).</li>
+        <li>Following a DDD layered architecture (Domain / Application / Infrastructure / UserInterface); maintaining quality with PHPStan, PHP-CS-Fixer, PHPUnit (unit + integration) and Playwright (E2E).</li>
+        <li>Managing infrastructure (Docker Compose, GitLab CI/CD, review apps), handling code reviews, merge conflict resolution, and pipeline verification across parallel feature branches.</li>
+      </ul>
+    </article>
+
+    <!-- Noda -->
+    <article class="job">
+      <div class="job-head">
+        <div><span class="role">PHP Developer</span> <span class="em">—</span> <span class="company">Noda (EU/UK Payment Provider), Remote</span></div>
+        <div class="dates">April 2024 — January 2026</div>
+      </div>
+      <p class="job-context">
+        Noda is a licensed payment provider operating across the EU and UK. I worked on the plugin ecosystem and
+        supporting Go-based backend services.
+      </p>
+      <ul class="bullets">
+        <li>Built and shipped official Noda Payment plugins for 5 e-commerce platforms: Magento 2, Shopware 6, WooCommerce, PrestaShop, and OpenCart — including a shared custom SDK to unify the integration layer.</li>
+        <li>Integrated Noda Payment and Stripe into a React-based checkout application.</li>
+        <li>Integrated Noda Payment into the WooCommerce Gutenberg checkout block (Blocks API).</li>
+        <li>Integrated ShipBob fulfillment and QuickBooks Online accounting with Magento 2.</li>
+        <li>
+          Developed Go microservices communicating via RabbitMQ:
+          <ul class="bullets nested">
+            <li>analytics service — scrapers and ingestion pipelines writing processed data into ClickHouse for reporting;</li>
+            <li>email notifications service — consumes a dedicated email queue, renders the appropriate template and dispatches transactional emails;</li>
+            <li>webhook delivery service — receives payment status updates from the core platform and pushes order status changes to merchant stores.</li>
+          </ul>
+        </li>
+        <li>Wrote technical documentation and managed plugin releases across Magento Marketplace, Shopware Store, WordPress.org, PrestaShop Addons, and OpenCart Marketplace.</li>
+      </ul>
+    </article>
+
+    <!-- Aurora -->
+    <article class="job">
+      <div class="job-head">
+        <div><span class="role">Magento 2 Developer</span> <span class="em">—</span> <span class="company">Aurora Creation, Poland</span></div>
+        <div class="dates">July 2023 — April 2024</div>
+      </div>
+      <ul class="bullets">
+        <li>Developed custom Magento 2 extensions and ensured compatibility with third-party modules from other vendors.</li>
+        <li>Integrated payment, shipping, and other third-party services via REST APIs.</li>
+        <li>Built and maintained Symfony-based microservices communicating through RabbitMQ; containerized services with Docker.</li>
+        <li>Profiled and optimized Magento 2 store performance and SQL queries; debugged complex issues with Xdebug.</li>
+        <li>Covered features with unit, integration, and end-to-end tests.</li>
+      </ul>
+    </article>
+
+    <!-- Onilab -->
+    <article class="job">
+      <div class="job-head">
+        <div><span class="role">Magento 2 Developer</span> <span class="em">—</span> <span class="company">Onilab LLC, Remote</span></div>
+        <div class="dates">April 2022 — July 2023</div>
+      </div>
+      <ul class="bullets">
+        <li>Worked on a large B2B Magento 2 project with a React-based frontend.</li>
+        <li>Developed backend GraphQL endpoints for the custom checkout, including payment integrations and cart/checkout compatibility.</li>
+        <li>Collaborated closely with the frontend team to align API contracts and resolve checkout edge cases.</li>
+      </ul>
+    </article>
+
+    <!-- Amasty -->
+    <article class="job">
+      <div class="job-head">
+        <div><span class="role">Magento 2 Developer</span> <span class="em">—</span> <span class="company">Amasty, Minsk, Belarus</span></div>
+        <div class="dates">August 2019 — April 2022</div>
+      </div>
+      <p class="job-context">
+        Amasty is one of the largest Magento extension vendors. I supported and developed core commercial products
+        used by thousands of merchants.
+      </p>
+      <ul class="bullets">
+        <li>Contributed to and supported high-profile Amasty extensions, including: One-Step Checkout, Reward Points, Gift Card, Stripe Integration, and Order/Customer Grid.</li>
+        <li>Resolved technical issues in customers' codebases via the support ticket system; delivered tailored solutions and bug fixes.</li>
+        <li>Refactored legacy extension code, profiled performance bottlenecks, and optimized SQL queries.</li>
+        <li>Built new custom extensions and integrations on top of existing Amasty products.</li>
+      </ul>
+    </article>
+
+    <!-- ============== LANGUAGES ============== -->
+    <h2 class="section">Languages</h2>
+    <p class="simple-row"><span class="label">English</span> — B2 (working proficiency)</p>
+    <p class="simple-row"><span class="label">Polish</span> — A2 (basic, improving)</p>
+    <p class="simple-row"><span class="label">Russian</span> — Native</p>
+
+    <!-- ============== EDUCATION ============== -->
+    <h2 class="section">Education</h2>
+    <p class="simple-row"><span class="label">Computer Systems and Networks</span> — University coursework <span class="date">(2019 — 2022)</span></p>
+    <p class="simple-row"><span class="label">Electronics Technician</span> — College Diploma <span class="date">(2013 — 2017)</span></p>
+
+  </main>
+
+</body>
+</html>
